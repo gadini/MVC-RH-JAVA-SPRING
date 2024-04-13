@@ -2,6 +2,7 @@ package com.github.acnaweb.mvc_rh.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,11 +15,11 @@ import jakarta.persistence.Table;
 @Table(name = "funcionarios")
 public class Funcionario extends AbstractEntity<Long> {
 
-	@Column(nullable = false, length = 60)
+	@Column(name = "nome_funcionario", nullable = false, length = 60)
 	private String nome;
 
 	@Column(nullable = false, columnDefinition = "DATE")
-	private LocalDate dataEntrada;
+	private LocalDateTime dataEntrada;
 
 	@Column(columnDefinition = "DATE")
 	private LocalDate dataSaida;
@@ -29,7 +30,7 @@ public class Funcionario extends AbstractEntity<Long> {
 	@ManyToOne
 	@JoinColumn(name = "cargo_id_fk", nullable = false)
 	private Cargo cargo;
-
+	
 	@OneToOne
 	@JoinColumn(name = "endereco_id_fk", nullable = false)
 	private Endereco endereco;

@@ -1,12 +1,17 @@
 package com.github.acnaweb.mvc_rh.model;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "enderecos")
-public class Endereco  extends AbstractEntity<Long> {
+public class Endereco extends AbstractEntity<Long> {
 
 	@Column(nullable = false, length = 60)
 	private String bairro;
@@ -26,7 +31,9 @@ public class Endereco  extends AbstractEntity<Long> {
 	private Long numero;
 
 	@Column(nullable = false, length = 2)
-	private String uf;
+	@Enumerated(EnumType.STRING)
+	@JdbcTypeCode(SqlTypes.CHAR)
+	private Uf uf;
 
 	public String getBairro() {
 		return bairro;
@@ -76,11 +83,11 @@ public class Endereco  extends AbstractEntity<Long> {
 		this.numero = numero;
 	}
 
-	public String getUf() {
+	public Uf getUf() {
 		return uf;
 	}
 
-	public void setUf(String uf) {
+	public void setUf(Uf uf) {
 		this.uf = uf;
 	}
 
