@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.acnaweb.mvc_rh.model.Departamento;
-import com.github.acnaweb.mvc_rh.model.Funcionario;
 import com.github.acnaweb.mvc_rh.repository.DepartamentoRepository;
 
 @Controller
@@ -50,7 +49,7 @@ public class DepartamentoController {
 		departamentoRepository.save(departamento);
 		return "redirect:/departamentos";
 	}
-	
+
 	@GetMapping("update/{id}")
 	public String update(@PathVariable Long id, Model model) {
 		Departamento departamento = departamentoRepository.findById(id).orElse(new Departamento());
@@ -58,7 +57,7 @@ public class DepartamentoController {
 		model.addAttribute("departamento", departamento);
 		return "departamento/form";
 	}
-	
+
 	@GetMapping("delete/{id}")
 	public String delete(@PathVariable Long id) {
 		departamentoRepository.deleteById(id);
