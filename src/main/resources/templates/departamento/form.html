@@ -23,16 +23,16 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">Id</div>
                 </div>
-                <input type="text" class="form-control" id="id">
+                <input type="text" class="form-control" id="id" th:field="*{id}" readonly>
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">Nome</div>
                 </div>
-                <input type="text" class="form-control" id="nome">
+                <input type="text" class="form-control" id="nome" th:field="*{nome}">
             </div>
-            
+                                     
             <button type="submit" class="btn btn-primary btn-sm">Confirmar</button>
             <a th:href="@{/departamentos}" class="btn btn-secondary btn-sm">Cancelar</a>
         </form>
