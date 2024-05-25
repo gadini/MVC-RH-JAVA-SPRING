@@ -31,5 +31,5 @@ public class Cargo extends AbstractEntity<Long> {
 
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
-	}	
+	}
 }
