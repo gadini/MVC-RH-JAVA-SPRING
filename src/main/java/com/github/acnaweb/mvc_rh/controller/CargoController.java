@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.acnaweb.mvc_rh.controller.dto.FormCargo;
+import com.github.acnaweb.mvc_rh.lov.ListOfValueBuilder;
 import com.github.acnaweb.mvc_rh.model.Cargo;
 import com.github.acnaweb.mvc_rh.model.Departamento;
 import com.github.acnaweb.mvc_rh.repository.CargoRepository;
@@ -28,6 +29,9 @@ public class CargoController {
 
 	@Autowired
 	private DepartamentoRepository departamentoRepository;
+	
+	@Autowired
+	private ListOfValueBuilder listOfValueBuilder;
 
 	@GetMapping()
 	public String list(Model model) {
@@ -38,7 +42,10 @@ public class CargoController {
 
 	@GetMapping("add")
 	public String create(Model model) {
+		
 		model.addAttribute("cargo", new FormCargo());
+		model.addAttribute("lovDepartamentos", 
+				listOfValueBuilder.getLovDepartamentos());
 		return "cargo/form";
 	}
 
@@ -60,6 +67,8 @@ public class CargoController {
 
 		FormCargo cargo = new FormCargo().toForm(entity);
 		model.addAttribute("cargo", cargo);
+		model.addAttribute("lovDepartamentos", 
+				listOfValueBuilder.getLovDepartamentos());		
 		return "cargo/form";
 	}
 

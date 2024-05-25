@@ -2,7 +2,9 @@ package com.github.acnaweb.mvc_rh.controller.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Optional;
 
+import com.github.acnaweb.mvc_rh.model.Cargo;
 import com.github.acnaweb.mvc_rh.model.Funcionario;
 
 public class FormFuncionario {
@@ -62,14 +64,26 @@ public class FormFuncionario {
 	}
 
 	public FormFuncionario toForm(Funcionario funcionario) {
-
+		this.id = funcionario.getId();
+		this.nome = funcionario.getNome();
+		this.dataEntrada = funcionario.getDataEntrada();
+		this.dataSaida = funcionario.getDataSaida();
+		this.salario = funcionario.getSalario();
+		this.idCargo = Optional.ofNullable(funcionario.getCargo())
+				.map(c -> c.getId())
+				.orElse(null);
 		return this;
 	}
-	
-	public Funcionario toModel() {
+
+	public Funcionario toModel(Cargo cargo) {
 		Funcionario funcionario = new Funcionario();
-		
-		return funcionario;		
+		funcionario.setId(this.getId());
+		funcionario.setNome(this.getNome());
+		funcionario.setDataEntrada(this.getDataEntrada());
+		funcionario.setDataSaida(this.getDataSaida());
+		funcionario.setCargo(cargo);
+		funcionario.setSalario(this.getSalario());
+		return funcionario;
 	}
 
 }

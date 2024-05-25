@@ -37,12 +37,14 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">Departamento</div>
                 </div>
-                <select class="form-control" id="id_departamento">
+                <select class="form-control" id="id_departamento" th:field="*{idDepartamento}">
                 	<option value="">-- Selecionar --</option>
-	                <option value="1">RH</option>	                
+	                <option th:each="lov : ${lovDepartamentos}"
+	                		th:value="${lov.value}"
+	                		th:text="${lov.text}">  
+					</option>	                
 	            </select>
-            </div>
-           
+            </div>                     
 			<button type="submit" class="btn btn-primary btn-sm">Confirmar</button>
             <a th:href="@{/cargos}" class="btn btn-secondary btn-sm">Cancelar</a>
         </form>
