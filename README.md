@@ -1,40 +1,6 @@
 # MVC RH
 
-Aplicação MVC de Recursos Humanos para fins didáticos
+Aplicação MVC de Recursos Humanos para fins didáticos. Contendo 3 entidades: Funcionários, Cargos e Departamentos. Este projeto faz o controle de funcionários da empresa, ou seja, faz a inserção, edicão e exclusão de funcionários, conforme são admitidos e demitidos de uma empresa. O sistema também controla os cargos e departamentos da empresa, tendo as 3 funcionalidades de inclusão, edição e exclusão que a entidade funcionários possui.
 
-## Setup e Uso
 
-### Execução / Local dev
 
-#### Terminal
-
-```sh
-./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
-```
-
-#### [H2 Web UI](http://localhost:8080/h2-console)
-
-> - *url*: jdbc:h2:mem:testdb
-> - *usuário*: sa
-> - *senha*: password
-
-![](assets/images/h2-console.png)
-
-## Arquitetura
-
-### MER
-
-![](assets/docs/src/mer/mer.svg)
-
-## Java
-
-> [Spring Initializr](https://start.spring.io/) - Criar aplicação conforme a configuração 
-
-### Spring Boot - Configuração
-
-![](assets/images/spring.png)
-
-## Referencias
-
- - https://spring.io/projects/spring-framework
- - https://plantuml.com/
