@@ -25,7 +25,8 @@
                     <th>Id</th>
                     <th>Nome</th>                
                     <th>Salário</th> 
-					<th>Cidade/UF</th>                                                       
+                    <th>Cargo</th>  
+                    <th>Departamento</th>                                                    
 					<th>Ações</th>
                 </tr>
             </thead>
@@ -34,7 +35,8 @@
                		<td th:text="${funcionario.id}"></td>
                    	<td th:text="${funcionario.nome}"></td>
                    	<td th:text="${#numbers.formatCurrency(funcionario.salario)}"></td>
-                   	<td></td>
+                   	<td th:text="${funcionario.cargo != null ?  funcionario.cargo.nome : '--' }"></td>
+                   	<td th:text="${funcionario.cargo != null ?  funcionario.cargo.departamento.nome : '--' }"></td>     
                    	<td>
                    		<a class="btn-sm btn-primary" th:href="@{/funcionarios/update/{id}(id=${funcionario.id})}">Editar</a>
 	                   	<a class="btn-sm btn-danger" th:href="@{/funcionarios/delete/{id}(id=${funcionario.id})}">Excluir</a>
